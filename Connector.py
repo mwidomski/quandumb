@@ -13,7 +13,7 @@ class Connector():
         self.udpSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
     # send UDP datagram
-    def send_slice(MemSlice chunk):
+    def send_slice(chunk):
         self.udpSocket.sendto(chunk.to_bytestream(), (self.ip, self.port))
     
     #receive UDP datagram
