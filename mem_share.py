@@ -9,7 +9,7 @@ def make_slices(self, buf, static, slice_count):
     for i in range(slice_count):
         buf_offset = (slice_size * i)
         head  = {"head": MEMSLICE_HEADER,
-                 "static": static.len
+                 "static": static.len,
                  "data": buf.len,
                  "offset": buf_offset}
         data = buf[offset:(offset + slice_size)]
@@ -27,11 +27,11 @@ class MemSlice:
             from_bytestream(head);
 
     
-    def from_bytestream():
+    def from_bytestream(self):
         #TODO
         return None
 
-    def to_bytestream:
+    def to_bytestream(self):
         byte = bytearray()
         headers = ["head", "static", "offset", "data"]
         for head in headers:
