@@ -28,7 +28,7 @@ class MemSlice:
 
     
     def from_bytestream(self):
-        #TODO
+        #TODO - Passback from RayTrace
         return None
 
     def to_bytestream(self):
@@ -38,4 +38,5 @@ class MemSlice:
             byte = byte.join(bytearray(self.head[head]))
         byte = byte.join(bytearray(self.static))
         byte = byte.join(bytearray(self.data))
-        return byte
+        proc = subprocess.Popen(['RayTrace'], stdin=subprocess.PIPE)
+        proc.communicate(byte);
