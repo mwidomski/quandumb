@@ -19,14 +19,13 @@ def make_slices(self, buf, slice_count):
 
 class MemSlice:
 
-    def __init__(self, head, datastream):
+    def __init__(self, head data):
         self.head = head
-        self.scene = scene
         self.data = datastream
 
     def to_bytestream:
         byte = bytearray()
-        headers = ["head", "scene", "data", "offset"]
+        headers = ["head", "offset", "data"]
         for head in headers:
             byte = byte.join(bytearray(self.head[head]))
         byte = byte.join(bytearray(self.data))
