@@ -1,3 +1,6 @@
+import subprocess
+import os
+
 MEMSLICE_HEADER = 16
 
 def set_chunk(self, buf, memslice):
@@ -18,25 +21,18 @@ def make_slices(self, buf, static, slice_count):
 
 class MemSlice:
 
-    def __init__(self, head , static = None, data = None):
-        if data is not None:
-            self.head = head
-            self.static = static
-            self.data = datastream
-        else:
-            from_bytestream(head);
-
-    
-    def from_bytestream(self):
+    def from_bytestream(self,head):
         #TODO - Passback from RayTrace
         return None
 
+    def __init__(self, data = None):
+        if data is not None:
+            self.data = data
+        #else:
+         #  from_bytestream(head);
+
     def to_bytestream(self):
-        byte = bytearray()
-        headers = ["head", "static", "offset", "data"]
-        for head in headers:
-            byte = byte.join(bytearray(self.head[head]))
-        byte = byte.join(bytearray(self.static))
-        byte = byte.join(bytearray(self.data))
-        proc = subprocess.Popen(['RayTrace'], stdin=subprocess.PIPE)
-        proc.communicate(byte);
+        proc = subprocess.Popen(['python','rayt.py'], stdin=subprocess.PIPE)
+        proc.communicate(bytearray(self.data));
+
+MemSlice(bytes("a23","utf-8")).to_bytestream()
