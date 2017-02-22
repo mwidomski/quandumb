@@ -1,15 +1,15 @@
 import socket
 import MemSlice
 
+BUF_SIZE = 1024
+
 class Connector():
-    BUF_SIZE = 1024
 
     def __init__(self, ip, port):
         Thread.__init__(self)
         self.ip = ip
         self.port = port
         
-        # establish UDP connection
         self.udpSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
     # send UDP datagram
