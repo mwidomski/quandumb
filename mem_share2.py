@@ -39,18 +39,21 @@ class MemSlice:
                 self.data = data
             else:
                 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+                print('waiting...')
                 s.bind(('', 2001))
                 (self.data, addr) = s.recvfrom(4096)
+                print('done')
                 #s.shutdown()
                 #s.close()
-                self.to_bytestream()
+                #self.to_bytestream()
+                print(self.data)
                 s.shutdown(SHUT_RDWR)
                 s.close()
 
 
     def to_bytestream(self):
-        proc = subprocess.Popen(['python', 'rayt.py'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
+        proc = subprocess.Popen(['./RayTrace'], stdin=subprocess.PIPE, stdout=subprocess.PIPE)
         std_out = proc.communicate(bytearray(self.data))
         self.from_bytestream(repr(std_out))
-        
-MemSlice(bytes('test', 'utf-8')).to_bytestream
+		
+MemSlice()
