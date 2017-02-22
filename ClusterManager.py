@@ -7,9 +7,6 @@ import mem_share as MemShare
 class ClusterManager:
     filename = "config.config"
 
-    def __init__(self):
-        print("debug: clusterManager created")
-
     def createConnectors(self):
         configfile = open(self.filename, "r")
         connectorList = []
@@ -38,5 +35,3 @@ class ClusterManager:
         #read from connectors to memshare
         for i in range(len(connectorList)):
             memShare.set_chunk(connectorList[i].get_slice())
-
-ClusterManager().main()
