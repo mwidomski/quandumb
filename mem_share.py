@@ -1,13 +1,12 @@
 import posix_ipc
 import mmap
 import sys
-import quandumb
 
 WINDOW_SIZE = 112
 HEAD_OFFSET = 32
 SLICE_HEAD_SIZE = 16
 
-class MemShare(Object):
+class MemShare():
 
     def __init__(self, memory_size = WINDOW_SIZE ):
         self.size = memory_size
@@ -40,6 +39,6 @@ class MemShare(Object):
                      "offset": offset}
             scene = self.buf[offset:(offset + self.scene_size)]
             data  = self.buf[offset:(offset + slice_size)]
-            slices.append(quandumb.MemSlice(head, scene, data))
+            slices.append(MemSlice(head, scene, data))
 
         return slices
