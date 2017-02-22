@@ -40,6 +40,6 @@ class MemShare(Object):
                      "offset": offset}
             scene = self.buf[offset:(offset + self.scene_size)]
             data  = self.buf[offset:(offset + slice_size)]
-            slices.append(quandimb.MemSlice(head, scene, data))
+            slices.append(quandumb.MemSlice(head, scene, data))
 
         return slices
